@@ -1,0 +1,366 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AE0595701F1DA61E00380A3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE05956F1F1DA61E00380A3D /* AppDelegate.swift */; };
+		AE0595721F1DA61E00380A3D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AE0595711F1DA61E00380A3D /* GameScene.sks */; };
+		AE0595741F1DA61E00380A3D /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AE0595731F1DA61E00380A3D /* Actions.sks */; };
+		AE0595761F1DA61E00380A3D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0595751F1DA61E00380A3D /* GameScene.swift */; };
+		AE0595781F1DA61E00380A3D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0595771F1DA61E00380A3D /* GameViewController.swift */; };
+		AE05957B1F1DA61E00380A3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE0595791F1DA61E00380A3D /* Main.storyboard */; };
+		AE05957D1F1DA61E00380A3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE05957C1F1DA61E00380A3D /* Assets.xcassets */; };
+		AE0595801F1DA61E00380A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE05957E1F1DA61E00380A3D /* LaunchScreen.storyboard */; };
+		AE05958C1F1DA83900380A3D /* ship.png in Resources */ = {isa = PBXBuildFile; fileRef = AE05958B1F1DA83900380A3D /* ship.png */; };
+		AE05958E1F1DAE3B00380A3D /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE05958D1F1DAE3B00380A3D /* Matrix.swift */; };
+		AE0595901F1DC50D00380A3D /* mountain.png in Resources */ = {isa = PBXBuildFile; fileRef = AE05958F1F1DC50D00380A3D /* mountain.png */; };
+		AE0595921F1DCBA000380A3D /* sea.png in Resources */ = {isa = PBXBuildFile; fileRef = AE0595911F1DCBA000380A3D /* sea.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AE05956C1F1DA61E00380A3D /* English_fighting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = English_fighting.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE05956F1F1DA61E00380A3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AE0595711F1DA61E00380A3D /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		AE0595731F1DA61E00380A3D /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		AE0595751F1DA61E00380A3D /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		AE0595771F1DA61E00380A3D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		AE05957A1F1DA61E00380A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AE05957C1F1DA61E00380A3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AE05957F1F1DA61E00380A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AE0595811F1DA61E00380A3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE05958B1F1DA83900380A3D /* ship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship.png; sourceTree = "<group>"; };
+		AE05958D1F1DAE3B00380A3D /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		AE05958F1F1DC50D00380A3D /* mountain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mountain.png; sourceTree = "<group>"; };
+		AE0595911F1DCBA000380A3D /* sea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sea.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE0595691F1DA61E00380A3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE0595631F1DA61E00380A3D = {
+			isa = PBXGroup;
+			children = (
+				AE05956E1F1DA61E00380A3D /* English_fighting */,
+				AE05956D1F1DA61E00380A3D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AE05956D1F1DA61E00380A3D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE05956C1F1DA61E00380A3D /* English_fighting.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE05956E1F1DA61E00380A3D /* English_fighting */ = {
+			isa = PBXGroup;
+			children = (
+				AE05958A1F1DA75A00380A3D /* Images */,
+				AE0595891F1DA74500380A3D /* resources */,
+				AE0595881F1DA64400380A3D /* layout */,
+				AE0595871F1DA63600380A3D /* supported files */,
+				AE0595711F1DA61E00380A3D /* GameScene.sks */,
+				AE0595731F1DA61E00380A3D /* Actions.sks */,
+				AE0595751F1DA61E00380A3D /* GameScene.swift */,
+				AE0595771F1DA61E00380A3D /* GameViewController.swift */,
+				AE05958D1F1DAE3B00380A3D /* Matrix.swift */,
+			);
+			path = English_fighting;
+			sourceTree = "<group>";
+		};
+		AE0595871F1DA63600380A3D /* supported files */ = {
+			isa = PBXGroup;
+			children = (
+				AE05956F1F1DA61E00380A3D /* AppDelegate.swift */,
+				AE05957C1F1DA61E00380A3D /* Assets.xcassets */,
+				AE05957E1F1DA61E00380A3D /* LaunchScreen.storyboard */,
+				AE0595811F1DA61E00380A3D /* Info.plist */,
+			);
+			name = "supported files";
+			sourceTree = "<group>";
+		};
+		AE0595881F1DA64400380A3D /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				AE0595791F1DA61E00380A3D /* Main.storyboard */,
+			);
+			name = layout;
+			sourceTree = "<group>";
+		};
+		AE0595891F1DA74500380A3D /* resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
+		AE05958A1F1DA75A00380A3D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AE05958F1F1DC50D00380A3D /* mountain.png */,
+				AE05958B1F1DA83900380A3D /* ship.png */,
+				AE0595911F1DCBA000380A3D /* sea.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE05956B1F1DA61E00380A3D /* English_fighting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE0595841F1DA61E00380A3D /* Build configuration list for PBXNativeTarget "English_fighting" */;
+			buildPhases = (
+				AE0595681F1DA61E00380A3D /* Sources */,
+				AE0595691F1DA61E00380A3D /* Frameworks */,
+				AE05956A1F1DA61E00380A3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = English_fighting;
+			productName = English_fighting;
+			productReference = AE05956C1F1DA61E00380A3D /* English_fighting.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE0595641F1DA61E00380A3D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = hnc;
+				TargetAttributes = {
+					AE05956B1F1DA61E00380A3D = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AE0595671F1DA61E00380A3D /* Build configuration list for PBXProject "English_fighting" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AE0595631F1DA61E00380A3D;
+			productRefGroup = AE05956D1F1DA61E00380A3D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE05956B1F1DA61E00380A3D /* English_fighting */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE05956A1F1DA61E00380A3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE05957B1F1DA61E00380A3D /* Main.storyboard in Resources */,
+				AE0595721F1DA61E00380A3D /* GameScene.sks in Resources */,
+				AE05957D1F1DA61E00380A3D /* Assets.xcassets in Resources */,
+				AE0595921F1DCBA000380A3D /* sea.png in Resources */,
+				AE0595901F1DC50D00380A3D /* mountain.png in Resources */,
+				AE0595801F1DA61E00380A3D /* LaunchScreen.storyboard in Resources */,
+				AE0595741F1DA61E00380A3D /* Actions.sks in Resources */,
+				AE05958C1F1DA83900380A3D /* ship.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE0595681F1DA61E00380A3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE05958E1F1DAE3B00380A3D /* Matrix.swift in Sources */,
+				AE0595761F1DA61E00380A3D /* GameScene.swift in Sources */,
+				AE0595781F1DA61E00380A3D /* GameViewController.swift in Sources */,
+				AE0595701F1DA61E00380A3D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AE0595791F1DA61E00380A3D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE05957A1F1DA61E00380A3D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AE05957E1F1DA61E00380A3D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE05957F1F1DA61E00380A3D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AE0595821F1DA61E00380A3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AE0595831F1DA61E00380A3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AE0595851F1DA61E00380A3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = English_fighting/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sunado.demo.English-fighting";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		AE0595861F1DA61E00380A3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = English_fighting/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sunado.demo.English-fighting";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE0595671F1DA61E00380A3D /* Build configuration list for PBXProject "English_fighting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE0595821F1DA61E00380A3D /* Debug */,
+				AE0595831F1DA61E00380A3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE0595841F1DA61E00380A3D /* Build configuration list for PBXNativeTarget "English_fighting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE0595851F1DA61E00380A3D /* Debug */,
+				AE0595861F1DA61E00380A3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AE0595641F1DA61E00380A3D /* Project object */;
+}
