@@ -12,78 +12,104 @@ import SpriteKit
 
 
 class Matrix{
-    var matrix: [[SKSpriteNode]] = []
-    
+    //
+    let maxRow: Int = 20
     let unMoveAble : SKTexture = SKTexture(imageNamed: "mountain")
     let moveAble : SKTexture = SKTexture(imageNamed: "sea")
+    let shipCategory:UInt32 = 0x1 << 0
+    let trapCategory:UInt32 = 0x1 << 1
+    let mountainCollsion: UInt32 = 0x1 << 2
     
+    //
+    var matrix: [[Int]] = []
     let row: Int!
     let col: Int!
     let width: CGFloat!
     let height: CGFloat!
+    let blockSize :CGSize!
     
     init(){
         row = 10
         col = 15
         width = 1000
         height = 800
+        let blockSizeX:CGFloat = width / CGFloat(col)
+        let blockSizeY:CGFloat = height / CGFloat(row)
+        blockSize = CGSize(width: blockSizeX, height: blockSizeY)
     }
     
     init(w: CGFloat,h : CGFloat){
-        row = 15
-        col =  Int(CGFloat(row) * h/w)
+        row = maxRow
+        col =  Int(CGFloat(row) * w/h)
         width = w
         height = h
+        let blockSizeX:CGFloat = width / CGFloat(col)
+        let blockSizeY:CGFloat = height / CGFloat(row)
+        blockSize = CGSize(width: blockSizeX, height: blockSizeY)
         print("row: \(row) col: \(col) width: \(w) height \(h)")
     }
 
-    func makeBoard(scene: SKScene, shipCategory: UInt32,trapCategory: UInt32){
-        let blockSizeX:CGFloat = width / CGFloat(row)
-        let blockSizeY:CGFloat = height / CGFloat(col)
-        var id:Int = 0
-        let size : CGSize = CGSize(width: blockSizeX, height: blockSizeY)
-        
-        
+    func makeBoard(scene: SKScene){
         for r in 0..<row {
-            var row : [SKSpriteNode] = []
+            var row : [Int] = []
             for c in 0..<col{
-                let block  = SKSpriteNode()
-                block.size = size
-                block.position = CGPoint(x: CGFloat(r) * blockSizeX - width/2+1, y:  CGFloat(c) * blockSizeY - height/2+1)
-                block.name = "sea-\(id)"
-                block.texture = moveAble
-                
-                id += 1
                 if rand(range: 7) {
-                    block.texture = self.unMoveAble
-                    block.name = "mountain-\(id)"
-                    
-                    let mountainPhysic = SKPhysicsBody(rectangleOf: size)
-                    mountainPhysic.isDynamic = false
-                    mountainPhysic.categoryBitMask = 0x1 << 2
-                    mountainPhysic.contactTestBitMask = shipCategory
-                    mountainPhysic.collisionBitMask = 0
-                    //mountainPhysic.usesPreciseCollisionDetection = true
-
-                    block.physicsBody = mountainPhysic
+                    let mountain = makeCell(r: r, c: c, bit: 1)
+                    row.append(1)
+                    scene.addChild(mountain)
                 } else if rand(range: 10){
-                    block.texture = nil
-                    block.color = .purple
-                    block.name = "trap-\(id)"
-                    
-                    let trapPhysic = SKPhysicsBody(rectangleOf: size)
-                    trapPhysic.isDynamic = false
-                    trapPhysic.categoryBitMask = trapCategory
-                    trapPhysic.contactTestBitMask = shipCategory
-                    trapPhysic.collisionBitMask = 0
-                    
-                    block.physicsBody = trapPhysic
+                    let trap = makeCell(r: r, c: c, bit: 2)
+                    row.append(2)
+                    scene.addChild(trap)
+                } else{
+                    let sea = makeCell(r: r, c: c, bit: 3)
+                    row.append(0)
+                    scene.addChild(sea)
                 }
-                row.append(block)
-                scene.addChild(block)
             }
             self.matrix.append(row)
         }
+    }
+    
+    
+    func makeCell(r:Int, c:Int, bit:Int) ->SKSpriteNode{
+        let block  = SKSpriteNode()
+        let px = CGFloat(c) * blockSize.width - width/2 + blockSize.width/2
+        let py = CGFloat(r) * blockSize.height - height/2 + blockSize.height/2
+        block.size = blockSize
+        block.position = CGPoint(x: px, y: py)
+        block.name = "sea"
+        block.texture = moveAble
+        switch bit {
+        case 1:
+            block.texture = self.unMoveAble
+            block.name = "mountain"
+            
+            let mountainPhysic = SKPhysicsBody(rectangleOf: blockSize)
+            mountainPhysic.isDynamic = false
+            mountainPhysic.categoryBitMask = mountainCollsion
+            mountainPhysic.contactTestBitMask = shipCategory
+            mountainPhysic.collisionBitMask = 0
+            block.physicsBody = mountainPhysic
+            break
+        case 2:
+            block.texture = nil
+            block.color = .purple
+            block.name = "trap"
+            
+            let trapPhysic = SKPhysicsBody(rectangleOf: blockSize)
+            trapPhysic.isDynamic = false
+            trapPhysic.categoryBitMask = trapCategory
+            trapPhysic.contactTestBitMask = shipCategory
+            trapPhysic.collisionBitMask = 0
+            block.physicsBody = trapPhysic
+            break
+        default :
+            block.name = "sea"
+            block.texture = moveAble
+            break
+        }
+        return block
     }
 
     func rand(range: Int) -> Bool{

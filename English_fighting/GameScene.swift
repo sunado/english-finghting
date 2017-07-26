@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene,SKPhysicsContactDelegate {
+class GameScene: SKScene {
     //tau
     var ship : SKSpriteNode!
     //vi tri cuoi
@@ -25,7 +25,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         print("init node")
         print("boards")
         boards = Matrix(w: self.size.width, h: self.size.height)
-        boards.makeBoard(scene: self, shipCategory: shipCategory, trapCategory: mapECategory)
+        boards.makeBoard(scene: self)
         
         print("ship")
         ship = SKSpriteNode(imageNamed: "ship.png")
@@ -45,20 +45,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         physicsWorld.contactDelegate = self
     }
-    //kiem tra va cham
-    func didBegin(_ contact: SKPhysicsContact) {
-        print("Contact")
-        
-        guard let nameA = contact.bodyA.node?.name else {
-            print("contact A has no name")
-            return
-        }
-        
-
-        if !isRollBack && nameA.hasPrefix("trap")  {
-            showAlert()
-        }
-    }
     
     
     func touchDown(atPoint pos : CGPoint) {
@@ -77,7 +63,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         for t in touches {
             //print("show click event")
             let location = t.location(in: self)
-            //print("Touch: \(location.x)  \(location.y) Node: \(touchnode)")
+            print(" =============================== Touch: \(location.x)  \(location.y) ")
             let action = SKAction.move(to: location, duration: 3.0)
             
             lastPosstion = ship.position
@@ -105,11 +91,16 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         // Called before each frame is rendered
     }
     
+    
+}
+
+extension GameScene {
     func showAlert(){
         let alert : UIAlertController = UIAlertController(title: "Meet Private",
-                message: "You had meet private, fight for life ?", preferredStyle: .alert)
+                                                          message: "You had meet private, fight for life ?", preferredStyle: .alert)
         let comfirmAction = UIAlertAction(title: "YES", style: .default){ [unowned self ] action in
             //do something
+            self.loadQuestion()
         }
         let cancel = UIAlertAction(title: "NO",style: .default){ [unowned self] action in
             //do something
@@ -121,6 +112,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
+    
     func rollbackPosition() {
         let action = SKAction.move(to: lastPosstion, duration: 2.5)
         isRollBack = true
@@ -128,4 +120,33 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             self.isRollBack = false
         }
     }
+    
+    func loadQuestion(){
+        let questionView  = ChooseQuestionController(nibName: "ChooseQuestionController", bundle: nil)
+        //let currentViewController:UIViewController=UIApplication.shared.keyWindow!.rootViewController!
+        //currentViewController.present(questionView, animated: true, completion: nil)
+        
+        let currentnavigation = UIApplication.shared.keyWindow!.rootViewController as! UINavigationController
+        print("calllllled")
+        currentnavigation.pushViewController(questionView, animated: true)
+    }
 }
+
+extension GameScene: SKPhysicsContactDelegate {
+    //kiem tra va cham
+    func didBegin(_ contact: SKPhysicsContact) {
+        print("Contact")
+        
+        guard let nameA = contact.bodyA.node?.name else {
+            print("contact A has no name")
+            return
+        }
+        
+        
+        if !isRollBack && nameA.hasPrefix("trap")  {
+            self.ship.removeAllActions()
+            showAlert()
+        }
+    }
+}
+
