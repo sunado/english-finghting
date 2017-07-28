@@ -15,7 +15,7 @@
             <connections>
                 <outlet property="abtn" destination="OXB-Bi-nyU" id="NXx-nA-sRh"/>
                 <outlet property="backbtn" destination="gvy-qy-2Wc" id="Tjz-N0-UYH"/>
-                <outlet property="backgroundView" destination="4M4-Iu-Qgm" id="Byu-C8-H4r"/>
+                <outlet property="backgroundImageView" destination="4M4-Iu-Qgm" id="XKy-4y-fY9"/>
                 <outlet property="bbtn" destination="UiZ-l4-5uU" id="dnB-TU-1l8"/>
                 <outlet property="cbtn" destination="BKl-d6-bif" id="f3J-vj-dk0"/>
                 <outlet property="dbtn" destination="Far-Oy-TJr" id="HnY-B5-4ZR"/>
@@ -28,16 +28,16 @@
             <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionbackground" translatesAutoresizingMaskIntoConstraints="NO" id="4M4-Iu-Qgm">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="privateBackgroundBlur" translatesAutoresizingMaskIntoConstraints="NO" id="4M4-Iu-Qgm">
                     <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What does the fox say ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88k-3q-z4T">
                     <rect key="frame" x="83" y="125" width="501" height="80"/>
-                    <color key="backgroundColor" red="0.59607843140000005" green="0.79215686269999996" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.031372549019607843" green="0.035294117647058823" blue="0.14509803921568626" alpha="0.29743685787671231" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="88k-3q-z4T" secondAttribute="height" multiplier="182:29" id="lDh-AV-gEO"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                     <color key="shadowColor" red="0.82512567839999995" green="0.84673106870000003" blue="0.83568223500000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -50,7 +50,8 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXB-Bi-nyU">
                                     <rect key="frame" x="0.0" y="0.0" width="263" height="36.5"/>
-                                    <color key="backgroundColor" red="0.3921568627" green="0.71372549019999998" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.031372549019607843" green="0.035294117647058823" blue="0.14509803921568626" alpha="0.34706763698630139" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="A.">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="titleShadowColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,7 +62,8 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKl-d6-bif">
                                     <rect key="frame" x="0.0" y="56.5" width="263" height="36"/>
-                                    <color key="backgroundColor" red="0.3921568627" green="0.71372549019999998" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.031372549019607843" green="0.035294117647058823" blue="0.14509803921568626" alpha="0.3026541095890411" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="C.">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
@@ -76,7 +78,8 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UiZ-l4-5uU">
                                     <rect key="frame" x="0.0" y="0.0" width="263" height="36.5"/>
-                                    <color key="backgroundColor" red="0.3921568627" green="0.71372549019999998" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.031372549019607843" green="0.035294117647058823" blue="0.14509803921568626" alpha="0.3514287243150685" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="B.">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -86,7 +89,8 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Far-Oy-TJr">
                                     <rect key="frame" x="0.0" y="56.5" width="263" height="36"/>
-                                    <color key="backgroundColor" red="0.3921568627" green="0.71372549019999998" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.031372549019607843" green="0.035294117647058823" blue="0.14509803921568626" alpha="0.349609375" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="D.">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
@@ -145,6 +149,6 @@
         </view>
     </objects>
     <resources>
-        <image name="questionbackground" width="250" height="180"/>
+        <image name="privateBackgroundBlur" width="295" height="166"/>
     </resources>
 </document>

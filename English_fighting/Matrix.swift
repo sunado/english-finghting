@@ -13,12 +13,9 @@ import SpriteKit
 
 class Matrix{
     //
-    let maxRow: Int = 20
+    let maxRow:Int = Config.MapSize.row
     let unMoveAble : SKTexture = SKTexture(imageNamed: "mountain")
     let moveAble : SKTexture = SKTexture(imageNamed: "sea")
-    let shipCategory:UInt32 = 0x1 << 0
-    let trapCategory:UInt32 = 0x1 << 1
-    let mountainCollsion: UInt32 = 0x1 << 2
     
     //
     var matrix: [[Int]] = []
@@ -27,6 +24,13 @@ class Matrix{
     let width: CGFloat!
     let height: CGFloat!
     let blockSize :CGSize!
+    
+    enum NodeType{
+        case Sea
+        case Mountain
+        case Trap
+        case Treasure
+    }
     
     init(){
         row = 10
@@ -53,56 +57,72 @@ class Matrix{
         for r in 0..<row {
             var row : [Int] = []
             for c in 0..<col{
+                if (r == 0) && (c == col-1) {
+                    let treasure = makeCell(r: r, c: c, type: .Treasure)
+                    row.append(3)
+                    scene.addChild(treasure)
+                    continue
+                }
                 if rand(range: 7) {
-                    let mountain = makeCell(r: r, c: c, bit: 1)
+                    let mountain = makeCell(r: r, c: c, type: .Mountain)
                     row.append(1)
                     scene.addChild(mountain)
                 } else if rand(range: 10){
-                    let trap = makeCell(r: r, c: c, bit: 2)
+                    let trap = makeCell(r: r, c: c, type: .Trap)
                     row.append(2)
                     scene.addChild(trap)
                 } else{
-                    let sea = makeCell(r: r, c: c, bit: 3)
+                    let sea = makeCell(r: r, c: c, type: .Sea)
                     row.append(0)
                     scene.addChild(sea)
                 }
+                
             }
             self.matrix.append(row)
         }
     }
     
     
-    func makeCell(r:Int, c:Int, bit:Int) ->SKSpriteNode{
+    func makeCell(r:Int, c:Int, type:NodeType) ->SKSpriteNode{
         let block  = SKSpriteNode()
         let px = CGFloat(c) * blockSize.width - width/2 + blockSize.width/2
         let py = CGFloat(r) * blockSize.height - height/2 + blockSize.height/2
         block.size = blockSize
         block.position = CGPoint(x: px, y: py)
         block.name = "sea"
-        block.texture = moveAble
-        switch bit {
-        case 1:
+        
+        switch type {
+        case .Mountain:
             block.texture = self.unMoveAble
             block.name = "mountain"
             
             let mountainPhysic = SKPhysicsBody(rectangleOf: blockSize)
             mountainPhysic.isDynamic = false
-            mountainPhysic.categoryBitMask = mountainCollsion
-            mountainPhysic.contactTestBitMask = shipCategory
-            mountainPhysic.collisionBitMask = 0
+            mountainPhysic.categoryBitMask = Config.Physic.mountainCategory
+            mountainPhysic.contactTestBitMask = Config.Physic.shipCategory
+            mountainPhysic.collisionBitMask = Config.Physic.all
             block.physicsBody = mountainPhysic
             break
-        case 2:
-            block.texture = nil
-            block.color = .purple
+        case .Trap:
+            block.color = .blue
             block.name = "trap"
             
             let trapPhysic = SKPhysicsBody(rectangleOf: blockSize)
             trapPhysic.isDynamic = false
-            trapPhysic.categoryBitMask = trapCategory
-            trapPhysic.contactTestBitMask = shipCategory
-            trapPhysic.collisionBitMask = 0
+            trapPhysic.categoryBitMask = Config.Physic.trapCategory
+            trapPhysic.contactTestBitMask = Config.Physic.shipCategory
+            trapPhysic.collisionBitMask = Config.Physic.all
             block.physicsBody = trapPhysic
+            break
+        case .Treasure:
+            block.color = .yellow
+            block.name = "treasure"
+            let treasurePhysic = SKPhysicsBody(rectangleOf: blockSize)
+            treasurePhysic.isDynamic = false
+            treasurePhysic.categoryBitMask = Config.Physic.trapCategory
+            treasurePhysic.contactTestBitMask = Config.Physic.shipCategory
+            treasurePhysic.collisionBitMask = Config.Physic.all
+            block.physicsBody = treasurePhysic
             break
         default :
             block.name = "sea"

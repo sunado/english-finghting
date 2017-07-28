@@ -23,8 +23,15 @@
 		AE234F211F25DB490038EE82 /* ChooseQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F201F25DB490038EE82 /* ChooseQuestion.swift */; };
 		AE234F2A1F25E0D90038EE82 /* ChooseQuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F281F25E0D90038EE82 /* ChooseQuestionController.swift */; };
 		AE234F2B1F25E0D90038EE82 /* ChooseQuestionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE234F291F25E0D90038EE82 /* ChooseQuestionController.xib */; };
-		AE234F311F25FAC40038EE82 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F301F25FAC40038EE82 /* MainController.swift */; };
+		AE234F311F25FAC40038EE82 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F301F25FAC40038EE82 /* MainMenuController.swift */; };
+		AE73CB4B1F299F3C00E6170B /* ExtendIUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73CB4A1F299F3C00E6170B /* ExtendIUIViewController.swift */; };
+		AE73CB4D1F29A32A00E6170B /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73CB4C1F29A32A00E6170B /* GameDelegate.swift */; };
+		AE73CB4F1F29C20300E6170B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73CB4E1F29C20300E6170B /* Config.swift */; };
 		AEFB7D501F1F1A48009D062B /* English_fighting.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = AEFB7D4F1F1F1A48009D062B /* English_fighting.xcworkspace */; };
+		AEFE893A1F287FB100E104CD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEFE89371F287FB100E104CD /* Bolts.framework */; };
+		AEFE893B1F287FB100E104CD /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEFE89381F287FB100E104CD /* FBSDKCoreKit.framework */; };
+		AEFE893C1F287FB100E104CD /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEFE89391F287FB100E104CD /* FBSDKLoginKit.framework */; };
+		AEFE893E1F2881FF00E104CD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFE893D1F2881FF00E104CD /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,8 +54,15 @@
 		AE234F201F25DB490038EE82 /* ChooseQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseQuestion.swift; sourceTree = "<group>"; };
 		AE234F281F25E0D90038EE82 /* ChooseQuestionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseQuestionController.swift; sourceTree = "<group>"; };
 		AE234F291F25E0D90038EE82 /* ChooseQuestionController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseQuestionController.xib; sourceTree = "<group>"; };
-		AE234F301F25FAC40038EE82 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		AE234F301F25FAC40038EE82 /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
+		AE73CB4A1F299F3C00E6170B /* ExtendIUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendIUIViewController.swift; sourceTree = "<group>"; };
+		AE73CB4C1F29A32A00E6170B /* GameDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
+		AE73CB4E1F29C20300E6170B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		AEFB7D4F1F1F1A48009D062B /* English_fighting.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = English_fighting.xcworkspace; sourceTree = "<group>"; };
+		AEFE89371F287FB100E104CD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		AEFE89381F287FB100E104CD /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		AEFE89391F287FB100E104CD /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		AEFE893D1F2881FF00E104CD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B4C976CA1D3AD372F4E3FFB4 /* Pods_English_fighting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_English_fighting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -58,6 +72,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D8678023D49A46D37C3D50F /* Pods_English_fighting.framework in Frameworks */,
+				AEFE893B1F287FB100E104CD /* FBSDKCoreKit.framework in Frameworks */,
+				AEFE893C1F287FB100E104CD /* FBSDKLoginKit.framework in Frameworks */,
+				AEFE893A1F287FB100E104CD /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +84,7 @@
 		AE0595631F1DA61E00380A3D = {
 			isa = PBXGroup;
 			children = (
+				AEFE89361F287F6700E104CD /* FBSDK */,
 				AE05956E1F1DA61E00380A3D /* English_fighting */,
 				AE05956D1F1DA61E00380A3D /* Products */,
 				D423314555E8436DEB0D729E /* Pods */,
@@ -89,13 +107,13 @@
 				AEFB7D521F1F1B09009D062B /* Helper */,
 				AE0595891F1DA74500380A3D /* resources */,
 				AE0595881F1DA64400380A3D /* layout */,
-				AE0595871F1DA63600380A3D /* supported files */,
+				AE0595871F1DA63600380A3D /* init files */,
 				AEFB7D511F1F1ADC009D062B /* Controller */,
 			);
 			path = English_fighting;
 			sourceTree = "<group>";
 		};
-		AE0595871F1DA63600380A3D /* supported files */ = {
+		AE0595871F1DA63600380A3D /* init files */ = {
 			isa = PBXGroup;
 			children = (
 				AEFB7D4F1F1F1A48009D062B /* English_fighting.xcworkspace */,
@@ -104,7 +122,7 @@
 				AE05957E1F1DA61E00380A3D /* LaunchScreen.storyboard */,
 				AE0595811F1DA61E00380A3D /* Info.plist */,
 			);
-			name = "supported files";
+			name = "init files";
 			sourceTree = "<group>";
 		};
 		AE0595881F1DA64400380A3D /* layout */ = {
@@ -140,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				AE234F201F25DB490038EE82 /* ChooseQuestion.swift */,
+				AEFE893D1F2881FF00E104CD /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -150,7 +169,7 @@
 				AE0595751F1DA61E00380A3D /* GameScene.swift */,
 				AE0595771F1DA61E00380A3D /* GameViewController.swift */,
 				AE234F281F25E0D90038EE82 /* ChooseQuestionController.swift */,
-				AE234F301F25FAC40038EE82 /* MainController.swift */,
+				AE234F301F25FAC40038EE82 /* MainMenuController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -159,8 +178,21 @@
 			isa = PBXGroup;
 			children = (
 				AE05958D1F1DAE3B00380A3D /* Matrix.swift */,
+				AE73CB4A1F299F3C00E6170B /* ExtendIUIViewController.swift */,
+				AE73CB4C1F29A32A00E6170B /* GameDelegate.swift */,
+				AE73CB4E1F29C20300E6170B /* Config.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		AEFE89361F287F6700E104CD /* FBSDK */ = {
+			isa = PBXGroup;
+			children = (
+				AEFE89371F287FB100E104CD /* Bolts.framework */,
+				AEFE89381F287FB100E104CD /* FBSDKCoreKit.framework */,
+				AEFE89391F287FB100E104CD /* FBSDKLoginKit.framework */,
+			);
+			name = FBSDK;
 			sourceTree = "<group>";
 		};
 		BCA07479E7290F6D75A4B445 /* Frameworks */ = {
@@ -311,11 +343,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE05958E1F1DAE3B00380A3D /* Matrix.swift in Sources */,
-				AE234F311F25FAC40038EE82 /* MainController.swift in Sources */,
+				AE234F311F25FAC40038EE82 /* MainMenuController.swift in Sources */,
+				AE73CB4D1F29A32A00E6170B /* GameDelegate.swift in Sources */,
 				AE0595761F1DA61E00380A3D /* GameScene.swift in Sources */,
+				AE73CB4F1F29C20300E6170B /* Config.swift in Sources */,
 				AE0595781F1DA61E00380A3D /* GameViewController.swift in Sources */,
+				AEFE893E1F2881FF00E104CD /* User.swift in Sources */,
 				AE0595701F1DA61E00380A3D /* AppDelegate.swift in Sources */,
 				AE234F2A1F25E0D90038EE82 /* ChooseQuestionController.swift in Sources */,
+				AE73CB4B1F299F3C00E6170B /* ExtendIUIViewController.swift in Sources */,
 				AE234F211F25DB490038EE82 /* ChooseQuestion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,6 +476,10 @@
 			baseConfigurationReference = 8E778589789635F8FC337974 /* Pods-English_fighting.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = English_fighting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sunado.demo.English-fighting";
@@ -453,6 +493,10 @@
 			baseConfigurationReference = 9183AD568BCA72A394D62808 /* Pods-English_fighting.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = English_fighting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sunado.demo.English-fighting";

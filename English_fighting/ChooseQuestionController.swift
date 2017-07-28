@@ -10,7 +10,7 @@ import UIKit
 class ChooseQuestionController: UIViewController {
     
     
-    @IBOutlet weak var backgroundView: UIImageView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var backbtn: UIButton!
     @IBOutlet weak var Hintbtn: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
@@ -18,19 +18,23 @@ class ChooseQuestionController: UIViewController {
     @IBOutlet weak var bbtn: UIButton!
     @IBOutlet weak var cbtn: UIButton!
     @IBOutlet weak var dbtn: UIButton!
-    var isQuestionLoaded: Bool?
     
+    
+    var answerDelegate : AnswerDelegate?
+    var isQuestionLoaded: Bool?
     var questions: [ChooseQuestion] = []
     
     
     @IBAction func perform(_ sender: UIButton) {
         switch sender {
         case backbtn:
-            self.navigationController?.popViewController(animated: true)
+            self.comfirmEscape()
             break
         case abtn:
+            self.showRightAnswerAlert()
             break
         case bbtn:
+            self.showWrongAnswerAlert()
             break
         case cbtn:
             break
@@ -42,7 +46,8 @@ class ChooseQuestionController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        backgroundView.layer.zPosition = -1
+        backgroundImageView.layer.zPosition = -1
+        //backgroundImageView.image = self.blur(image: #imageLiteral(resourceName: "background2"))
         if isQuestionLoaded == nil  {
             setBorder(layer: questionLabel.layer)
             setBorder(layer: abtn.layer)
@@ -55,7 +60,7 @@ class ChooseQuestionController: UIViewController {
         
     }
     
-    func setBorder(layer: CALayer,width: CGFloat = 2.5,color: CGColor = UIColor.white.cgColor,radius: CGFloat = 30){
+    func setBorder(layer: CALayer,width: CGFloat = 1,color: CGColor = UIColor.white.cgColor,radius: CGFloat = 30){
         layer.borderWidth = width
         layer.borderColor = color
         layer.cornerRadius = radius
@@ -67,6 +72,7 @@ class ChooseQuestionController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
     func loadQuestion(id :Int){
         print("startload Question")
         let urlString = "http://sunado.me:3000/question/\(id)"
@@ -77,7 +83,7 @@ class ChooseQuestionController: UIViewController {
         let task = URLSession.shared.dataTask(with: request) {
             (data, response, error) in
             if error == nil,let usableData = data {
-                print("===============================")
+                //print("===============================")
                 print(usableData) //JSONSerialization
                 do {
                     let json = try JSONSerialization.jsonObject(with: usableData) as? [String:Any]
@@ -137,15 +143,41 @@ class ChooseQuestionController: UIViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
     }
+    func comfirmEscape(){
+        let alert : UIAlertController = UIAlertController(title: "",
+                                                          message: "You want quit ?", preferredStyle: .alert)
+        let comfirmAction = UIAlertAction(title: "YES", style: .default){ [unowned self ] action in
+            //do something
+            self.answerDelegate?.send(result: false)
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        let cancel = UIAlertAction(title: "NO",style: .default)
+        
+        alert.addAction(comfirmAction)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    func showRightAnswerAlert(){
+        print("showRightAnswerAlert")
+        let alert : UIAlertController = UIAlertController(title: "Great", message: "You win the fight", preferredStyle: .alert)
+        let comfirmAction = UIAlertAction(title: "OK", style: .default){ [unowned self ] action in
+            self.answerDelegate?.send(result: true)
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(comfirmAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    func showWrongAnswerAlert(){
+        let alert : UIAlertController = UIAlertController(title: "Oh no", message: "You lose the fight", preferredStyle: .alert)
+        let comfirmAction = UIAlertAction(title: "OK", style: .default){ [unowned self ] action in
+            self.answerDelegate?.send(result: false)
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(comfirmAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+
 }
