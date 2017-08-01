@@ -10,22 +10,13 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 class MainController: UIViewController {
+    @IBOutlet weak var avataImageView: UIImageView!
+    let netWorkHelper = NetWorkHelper()
     
-    @IBOutlet weak var avataView: UIImageView!
-    
-    @IBAction func loginPerform(_ sender: UIButton) {
-        if((FBSDKAccessToken.current()) == nil || FBSDKAccessToken.current().expirationDate < Date() ){
-            login()
-        } else {
-            self.loadUserdata(token: FBSDKAccessToken.current().tokenString)
-        }
-        
-    }
-    let loginManager: FBSDKLoginManager = FBSDKLoginManager()
-    let readPermissions = ["public_profile","email","user_friends"]
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +25,13 @@ class MainController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool){
+        if(avataImageView.image == nil){
+            netWorkHelper.loadAvata(){ image in
+                DispatchQueue.main.async {
+                    self.avataImageView.image = image
+                }
+            }
+        }
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -41,58 +39,14 @@ class MainController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    func login(){
-        loginManager.logIn(withReadPermissions: readPermissions, from: self){ (res,err) in
-            if(err == nil){
-                if(err == nil){
-                    print("login success accesstoken is: \(FBSDKAccessToken.current().tokenString)")
-                    if let result = res {
-                        if result.grantedPermissions != nil {
-                            //self.getData()
-                            self.loadUserdata(token: FBSDKAccessToken.current().tokenString)
-                        }
-                    }
-                }else{
-                    print("login fail")
-                }
-            }
-        }
+    @IBAction func performPlay(_ sender: UIButton) {
     }
     
-    func getData(){
-        if FBSDKAccessToken.current() != nil {
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name"])
-                .start(completionHandler: { (connect,result,err) in
-                    if err == nil {
-                        let dict = result as! Dictionary<String,Any>
-                        print(dict)
-                    }
-                    
-                })
+    @IBAction func performLogin(_ sender: UIButton) {
+        if DataManager.isLogin() {
+            netWorkHelper.loadUserdata(token: FBSDKAccessToken.current().tokenString)
+        } else {
+            netWorkHelper.login(viewController: self)
         }
     }
-    func loadUserdata(token: String){
-        print("startload data")
-        let urlString = "http://localhost:3000/auth/token=\(token)"
-        guard let requestUrl = URL(string:urlString) else { return }
-        
-        let request = URLRequest(url:requestUrl)
-        
-        let task = URLSession.shared.dataTask(with: request) {
-            (data, response, error) in
-            if error == nil,let usableData = data {
-                print("===============================")
-                print(usableData) //JSONSerialization
-                do {
-                    let json = try JSONSerialization.jsonObject(with: usableData) as? [String:Any]
-                    
-                    print("\(String(describing: json))")
-                } catch {
-                    print(" some thing wrong")
-                }
-            }
-        }
-        task.resume()
-    }
-    
 }

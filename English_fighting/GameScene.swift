@@ -159,11 +159,11 @@ extension GameScene {
         }
     }
     func loadQuestion(){
-        let questionView  = ChooseQuestionController(nibName: "ChooseQuestionController", bundle: nil)
-        questionView.answerDelegate = self
+        let questionView  = ListenQuestionViewController(delegate: self)
         let currentnavigation = UIApplication.shared.keyWindow!.rootViewController as! UINavigationController
         currentnavigation.pushViewController(questionView, animated: true)
     }
+    
     func endGame(){
         let alert : UIAlertController = UIAlertController(title: "YOU WIN",
                                                           message: "DO YOU WANT TO REVIEW ANSWERS ?", preferredStyle: .alert)

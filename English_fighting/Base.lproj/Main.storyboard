@@ -27,7 +27,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2196" y="-314"/>
+            <point key="canvasLocation" x="2313" y="-314"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uSt-6L-gRq">
@@ -65,7 +65,7 @@
                                 </constraints>
                                 <state key="normal" image="facebookIcon"/>
                                 <connections>
-                                    <action selector="loginPerform:" destination="UA8-EB-hgE" eventType="touchUpInside" id="Jji-Fj-Ycf"/>
+                                    <action selector="performLogin:" destination="UA8-EB-hgE" eventType="touchUpInside" id="JXv-Yd-B6C"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gX-4q-l85">
@@ -76,7 +76,8 @@
                                 </constraints>
                                 <state key="normal" image="playIcon"/>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="LWN-vk-jnN"/>
+                                    <action selector="performPlay:" destination="UA8-EB-hgE" eventType="touchUpInside" id="N5i-HD-4jE"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="ecV-Dp-4st"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ copy left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rqo-Oa-yUu">
@@ -92,11 +93,28 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.23718283412420205" green="0.20903760094533957" blue="0.16373696708661495" alpha="0.88880565068493156" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tlh-3h-FW1">
+                                <rect key="frame" x="30" y="202" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="fI8-0k-G3n"/>
+                                    <constraint firstAttribute="width" constant="120" id="tLk-zW-NcT"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ng6-tI-5Rm">
+                                <rect key="frame" x="20" y="173" width="118" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.23986448772410207" green="0.63534204471516165" blue="0.74515396356582642" alpha="0.88880565068493156" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="tlh-3h-FW1" firstAttribute="leading" secondItem="frW-qk-4ru" secondAttribute="leadingMargin" constant="10" id="3NP-0f-p3X"/>
                             <constraint firstItem="Rqo-Oa-yUu" firstAttribute="leading" secondItem="frW-qk-4ru" secondAttribute="leadingMargin" id="6FT-pB-ITc"/>
+                            <constraint firstItem="ng6-tI-5Rm" firstAttribute="top" secondItem="wFo-F9-x0a" secondAttribute="bottom" constant="109" id="A5g-tM-n3b"/>
+                            <constraint firstItem="tlh-3h-FW1" firstAttribute="top" secondItem="ng6-tI-5Rm" secondAttribute="bottom" constant="8" id="Acx-wf-kCD"/>
                             <constraint firstItem="X0c-e5-aET" firstAttribute="centerX" secondItem="frW-qk-4ru" secondAttribute="centerX" id="LOy-sW-goa"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ng6-tI-5Rm" secondAttribute="leading" id="R3C-oF-0xE"/>
                             <constraint firstItem="vCW-NS-j1C" firstAttribute="centerX" secondItem="frW-qk-4ru" secondAttribute="centerX" id="U3H-D7-XcZ"/>
                             <constraint firstItem="Qjd-6M-GGg" firstAttribute="top" secondItem="X0c-e5-aET" secondAttribute="bottom" constant="20" id="VdI-hv-Tcc"/>
                             <constraint firstItem="6gX-4q-l85" firstAttribute="top" secondItem="vCW-NS-j1C" secondAttribute="bottom" constant="35" id="bCF-4I-fog"/>
@@ -106,6 +124,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="c8s-rd-DVz"/>
+                    <connections>
+                        <outlet property="avataImageView" destination="tlh-3h-FW1" id="5qW-Vj-LBR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dn-el-gFC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

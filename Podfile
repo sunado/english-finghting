@@ -6,8 +6,5 @@ target 'English_fighting' do
   use_frameworks!
 
   # Pods for English_fighting
-  pod 'Firebase/Core'
-  pod 'Firebase/Database'
-  pod 'Firebase/Auth'
   
 end
