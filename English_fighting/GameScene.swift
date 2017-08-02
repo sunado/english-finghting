@@ -10,11 +10,14 @@ import SpriteKit
 import GameplayKit
 import SceneKit
 class GameScene: SKScene {
-    //tau
+    let DISTANCEPERDICE:Double = 50
+    var dicstance:Double = 0
+    //ship
     var ship: SKSpriteNode!
     //vi tri cuoi
-    var lastPosstion: CGPoint!
-    //ban do
+    var lastPosition: CGPoint!
+    var currentPosition: CGPoint!
+    //map
     var boards :Matrix!
     //dice
     var dice: SKSpriteNode!
@@ -28,9 +31,9 @@ class GameScene: SKScene {
         case ENDMOVE
         case MEETPIVATE
         case ANSWERED
+        case ROLLBACK
         case ENDTURN
         case FINISH
-        case ROLLBACK
     }
     var state: State!
     //khoi tao cac node
@@ -57,12 +60,14 @@ class GameScene: SKScene {
             case .STARTROLL:
                 break
             case .ENDROLL:
-                lastPosstion = ship.position
+                lastPosition = ship.position
                 state = State.MOVEABLE
                 let action = SKAction.move(to: location, duration: 2.5)
                 ship.run(action)
                 break
             case .ENDMOVE:
+                showEndMoveAlert()
+                state = State.BEGINTURN
                 break
             case .MOVEABLE:
                 let action = SKAction.move(to: location, duration: 2.5)
@@ -76,14 +81,27 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        if(state == State.MOVEABLE){
+            let newpos = ship.position
+            let dx:Double = Double(newpos.x - currentPosition.x)
+            let dy:Double = Double(newpos.y - currentPosition.y)
+            let d = sqrt( pow(dx,2) + pow(dy,2) )
+            dicstance -= d
+            if(dicstance < 0){
+                state = State.ENDMOVE
+                ship.removeAllActions()
+            }
+        }
+        currentPosition = ship.position
     }
 }
+
 
 extension GameScene {
     func initShip(){
         print("ship")
         ship = SKSpriteNode(imageNamed: "ship.png")
-        ship.position = CGPoint(x: -200, y: -200)
+        ship.position = CGPoint(x: 0 - self.frame.size.width/2+30, y: self.frame.size.height/2-30)
         ship.zPosition = 1
         ship.size = CGSize(width: 40, height: 40)
         ship.physicsBody = SKPhysicsBody(rectangleOf: ship.size)
@@ -92,7 +110,8 @@ extension GameScene {
         ship.physicsBody?.categoryBitMask = Config.Physic.shipCategory
         ship.physicsBody?.contactTestBitMask = Config.Physic.trapCategory
         ship.physicsBody?.collisionBitMask = Config.Physic.shipCollisionBitMask
-        lastPosstion = ship.position
+        lastPosition = ship.position
+        currentPosition = ship.position
         self.addChild(ship)
     }
     
@@ -119,11 +138,12 @@ extension GameScene {
     
     func rolltheDice(){
         self.dice.isHidden = false
-        let roll = SKAction.repeat(SKAction.animate(with: diceFrame, timePerFrame: 0.06), count: 5)
+        let roll = SKAction.repeat(SKAction.animate(with: diceFrame, timePerFrame: 0.06), count: 3)
         self.state = State.STARTROLL
         dice.run(roll){
             let diceNumber = Int(arc4random_uniform(UInt32(6)))
             self.dice.texture = self.diceFrame[diceNumber]
+            self.dicstance = Double(diceNumber+1)*self.DISTANCEPERDICE
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
                 self.dice.isHidden = true
                 self.state = State.ENDROLL
@@ -150,7 +170,7 @@ extension GameScene {
     }
     
     func rollbackPosition() {
-        let action = SKAction.move(to: lastPosstion, duration: 1.5)
+        let action = SKAction.move(to: lastPosition, duration: 1.5)
         self.ship.physicsBody?.isDynamic = false
         state = State.ROLLBACK
         ship.run(action) {
@@ -159,9 +179,22 @@ extension GameScene {
         }
     }
     func loadQuestion(){
-        let questionView  = ListenQuestionViewController(delegate: self)
+        let questionView  = makeQuestion()
         let currentnavigation = UIApplication.shared.keyWindow!.rootViewController as! UINavigationController
         currentnavigation.pushViewController(questionView, animated: true)
+    }
+    
+    func makeQuestion() -> UIViewController{
+        let rand = Int(arc4random_uniform(UInt32(100)))
+        //rand = 2
+        switch rand {
+        case 0..<30:
+            return ListenQuestionViewController(delegate: self) as UIViewController
+        case 31..<70:
+            return SpeakQuestionViewController(delegate: self) as UIViewController
+        default:
+            return ChooseQuestionController(delegate: self) as UIViewController
+        }
     }
     
     func endGame(){
@@ -182,6 +215,16 @@ extension GameScene {
         
         self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
+    func showEndMoveAlert(){
+        let alert : UIAlertController = UIAlertController(title: "",
+                                                          message: "Your move end", preferredStyle: .alert)
+        let comfirmAction = UIAlertAction(title: "OK", style: .default){ [unowned self ] action in
+            //do something
+            self.state  = State.BEGINTURN
+        }
+        alert.addAction(comfirmAction)
+        self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension GameScene: SKPhysicsContactDelegate {
@@ -195,6 +238,7 @@ extension GameScene: SKPhysicsContactDelegate {
         
         if state != State.ROLLBACK && nameA.hasPrefix("trap")  {
             self.ship.removeAllActions()
+            contact.bodyA.node?.name = "sea"
             self.showMeetPivateAlert()
         } else if nameA.hasPrefix("mountain") {
             self.ship.removeAllActions()
@@ -209,6 +253,8 @@ extension GameScene: AnswerDelegate {
     func send(result: Bool){
         if result == false {
             self.rollbackPosition()
+        } else {
+            self.state = State.BEGINTURN
         }
     }
 }

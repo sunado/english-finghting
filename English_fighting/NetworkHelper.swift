@@ -12,6 +12,8 @@ import FBSDKLoginKit
 struct NetWorkHelper {
     let readPermissions = ["public_profile","email","user_friends"]
     
+    static let host = "sunado.me:3000"
+    
     static var isLogin: Bool {
         get{
             return FBSDKAccessToken.current() != nil && FBSDKAccessToken.current().expirationDate > Date()
@@ -20,7 +22,7 @@ struct NetWorkHelper {
     
     func loadQuestion(id :Int,type: String,completeHandler: @escaping (_ json: [String:Any]) -> Void){
         print("startload Question")
-        let urlString = "http://localhost:3000/question/\(type)/\(id)"
+        let urlString = "http://\(NetWorkHelper.host)/question/\(type)/\(id)"
         print("url: \(urlString)")
         guard let requestUrl = URL(string:urlString) else { return }
         let request = URLRequest(url:requestUrl)
@@ -63,7 +65,7 @@ struct NetWorkHelper {
     
     func loadUserdata(token: String){
         print("startload data")
-        let urlString = "http://suando.me:3000/auth/token=\(token)"
+        let urlString = "http://\(NetWorkHelper.host)/auth/token=\(token)"
         guard let requestUrl = URL(string:urlString) else { return }
         let request = URLRequest(url:requestUrl)
         let task = URLSession.shared.dataTask(with: request) {

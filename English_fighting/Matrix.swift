@@ -105,6 +105,7 @@ class Matrix{
             break
         case .Trap:
             block.color = .blue
+            //block.texture = moveAble
             block.name = "trap"
             
             let trapPhysic = SKPhysicsBody(rectangleOf: blockSize)

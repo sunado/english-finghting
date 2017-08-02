@@ -18,12 +18,13 @@ class ListenQuestionViewController: UIViewController {
     @IBOutlet weak var dUIButton: UIButton!
     @IBOutlet weak var backgroundUIImageView: UIImageView!
     var delegate: AnswerDelegate
-    let actionHelper = QuestionViewActionHelper()
+    var actionHelper = QuestionViewActionHelper()
     var isQuestionLoaded: Bool?
     let netWorkHelper = NetWorkHelper()
     let speaker = AVSpeechSynthesizer()
     var utterance: AVSpeechUtterance?
     var speakerLock = false
+    
     init(delegate: AnswerDelegate){
         self.delegate = delegate
         super.init(nibName: "ListenQuestionViewController", bundle: nil)
@@ -70,32 +71,39 @@ class ListenQuestionViewController: UIViewController {
         setBorder(layer: dUIButton.layer,radius: aUIButton.frame.size.height/2)
         setBorder(layer: backUIButton.layer,width: 1,color: UIColor.white.cgColor,radius: 0)
         
+        //loading overlay
+        //actionHelper.showLoadingOverlay(view: self)
+        
+        //load question
+        
+        netWorkHelper.loadQuestion(id: 1, type: DataManager.LISTENQUESTION){ json in
+            let question = ListenQuestion.create(data: json)
+            if let question = question {
+                DispatchQueue.main.async {
+                    self.aUIButton.setTitle(question.answerA, for: .normal)
+                    self.bUIButton.setTitle(question.answerB, for: .normal)
+                    self.cUIButton.setTitle(question.answerC, for: .normal)
+                    self.dUIButton.setTitle(question.answerD, for: .normal)
+                    //self.actionHelper.hideLoadingOverlay()
+                }
+                self.utterance = AVSpeechUtterance(string: question.question)
+                self.utterance?.voice = AVSpeechSynthesisVoice(language: "en-US")
+                self.utterance?.rate = 0.5
+                self.utterance?.pitchMultiplier = 1.2
+                
+                //stop overlay
+            
+                
+            }
+        }
+            
+    
+        //set delegate
         self.speaker.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if isQuestionLoaded == nil {
-            netWorkHelper.loadQuestion(id: 1, type: DataManager.LISTENQUESTION){ json in
-                let question = ListenQuestion.create(data: json)
-                if let question = question {
-                    DispatchQueue.main.async {
-                        self.aUIButton.setTitle(question.answerA, for: .normal)
-                        self.bUIButton.setTitle(question.answerB, for: .normal)
-                        self.cUIButton.setTitle(question.answerC, for: .normal)
-                        self.dUIButton.setTitle(question.answerD, for: .normal)
-                    }
-                    self.utterance = AVSpeechUtterance(string: question.question)
-                    self.utterance?.voice = AVSpeechSynthesisVoice(language: "en-US")
-                    self.utterance?.rate = 0.5
-                    self.utterance?.pitchMultiplier = 1.2
-                    self.isQuestionLoaded = true
-                    self.viewDidLoad()
-                    self.viewWillAppear(animated)
-                }
-            }
-            
-        }
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -114,7 +122,6 @@ class ListenQuestionViewController: UIViewController {
         layer.borderColor = color
         layer.cornerRadius = radius
     }
-    
 }
 
 extension ListenQuestionViewController : AVSpeechSynthesizerDelegate {

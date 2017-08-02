@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UXb-Vt-bhu">
-    <device id="retina4_7" orientation="landscape">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UXb-Vt-bhu">
+    <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,7 +19,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
                     </layoutGuides>
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -54,11 +54,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Qjd-6M-GGg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="frW-qk-4ru">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0c-e5-aET">
-                                <rect key="frame" x="313" y="325" width="40" height="30"/>
+                                <rect key="frame" x="348" y="364" width="40" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="l6y-jz-joT"/>
                                     <constraint firstAttribute="width" constant="40" id="rXa-aK-kKd"/>
@@ -69,7 +69,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gX-4q-l85">
-                                <rect key="frame" x="303" y="202" width="60" height="60"/>
+                                <rect key="frame" x="338" y="202" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="JjS-iw-aeJ"/>
                                     <constraint firstAttribute="width" constant="60" id="NmJ-vO-4K7"/>
@@ -81,13 +81,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ copy left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rqo-Oa-yUu">
-                                <rect key="frame" x="20" y="334" width="86.5" height="21"/>
+                                <rect key="frame" x="20" y="373" width="86.666666666666671" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.86365582190000001" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English Fighting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCW-NS-j1C">
-                                <rect key="frame" x="164" y="104" width="339" height="63"/>
+                                <rect key="frame" x="198.66666666666663" y="104" width="339" height="63"/>
                                 <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="49"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -134,7 +134,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="facebookIcon" width="256" height="256"/>
-        <image name="playIcon" width="256" height="256"/>
+        <image name="facebookIcon" width="170" height="170"/>
+        <image name="playIcon" width="170" height="170"/>
     </resources>
 </document>

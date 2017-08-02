@@ -42,8 +42,10 @@ class ChooseQuestionController: UIViewController {
             actionHelper.showWrongAnswerAlert(delegate: delegate,view: self)
             break
         case cbtn:
+            actionHelper.showWrongAnswerAlert(delegate: delegate,view: self)
             break
         case dbtn:
+            actionHelper.showWrongAnswerAlert(delegate: delegate,view: self)
             break
         default:
             break
