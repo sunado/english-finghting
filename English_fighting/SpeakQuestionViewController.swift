@@ -8,24 +8,23 @@
 
 import UIKit
 import Speech
-class SpeakQuestionViewController: UIViewController {
+class SpeakQuestionViewController: AbstractQuestionViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var backUIButton: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var recognizerUIButton: UIButton!
     @IBOutlet weak var recognizerLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
     let networkHelper = NetWorkHelper()
-    let actionHelper = QuestionViewActionHelper()
-    var delegate : AnswerDelegate
     let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
     
     init(delegate: AnswerDelegate){
-        self.delegate = delegate
         super.init(nibName: "SpeakQuestionViewController", bundle: nil)
+        self.delegate = delegate
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,7 +41,7 @@ class SpeakQuestionViewController: UIViewController {
     }
     
     @IBAction func performBack(_ sender: UIButton) {
-        actionHelper.comfirmEscape(delegate: delegate, view: self)
+        comfirmEscape()
     }
 
     override func viewDidLoad() {
@@ -50,10 +49,9 @@ class SpeakQuestionViewController: UIViewController {
         // Do any additional setup after loading the view.
         backgroundImageView.layer.zPosition = -1
         speechRecognizer?.delegate = self
+        progressView.setProgress(1, animated: true)
         SFSpeechRecognizer.requestAuthorization{ (status) in
-            
             var isButtonEnable = false
-            
             switch status {
             case .authorized:
                 isButtonEnable = true
@@ -78,6 +76,9 @@ class SpeakQuestionViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        startCountDown(with: progressView)
     }
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false

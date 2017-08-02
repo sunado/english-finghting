@@ -44,7 +44,7 @@ struct NetWorkHelper {
         task.resume()
     }
     
-    func login(viewController: UIViewController){
+    func login(viewController: UIViewController,callback: @escaping () -> Void){
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
         loginManager.logIn(withReadPermissions: readPermissions, from: viewController){ (res,err) in
             if(err == nil){
@@ -54,6 +54,7 @@ struct NetWorkHelper {
                         if result.grantedPermissions != nil {
                             //self.getData()
                             self.loadUserdata(token: FBSDKAccessToken.current().tokenString)
+                            callback()
                         }
                     }
                 }else{

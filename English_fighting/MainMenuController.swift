@@ -40,13 +40,26 @@ class MainController: UIViewController {
     }
     
     @IBAction func performPlay(_ sender: UIButton) {
+        if(DataManager.isLogin()){
+            let gameViewController = GameViewController(nibName: "GameViewController", bundle: nil)
+            self.navigationController?.pushViewController(gameViewController, animated: true)
+        }else {
+            showToast(message: "You must login first")
+        }
     }
-    
     @IBAction func performLogin(_ sender: UIButton) {
         if DataManager.isLogin() {
             netWorkHelper.loadUserdata(token: FBSDKAccessToken.current().tokenString)
         } else {
-            netWorkHelper.login(viewController: self)
+            netWorkHelper.login(viewController: self){
+                self.netWorkHelper.loadAvata(){ image in
+                    DispatchQueue.main.async {
+                        self.avataImageView.image = image
+                    }
+                }
+
+            }
+            
         }
     }
 }

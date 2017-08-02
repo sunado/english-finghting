@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-class ListenQuestionViewController: UIViewController {
+class ListenQuestionViewController: AbstractQuestionViewController {
 
     @IBOutlet weak var backUIButton: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
@@ -17,8 +17,7 @@ class ListenQuestionViewController: UIViewController {
     @IBOutlet weak var cUIButton: UIButton!
     @IBOutlet weak var dUIButton: UIButton!
     @IBOutlet weak var backgroundUIImageView: UIImageView!
-    var delegate: AnswerDelegate
-    var actionHelper = QuestionViewActionHelper()
+    @IBOutlet weak var progressView: UIProgressView!
     var isQuestionLoaded: Bool?
     let netWorkHelper = NetWorkHelper()
     let speaker = AVSpeechSynthesizer()
@@ -26,8 +25,8 @@ class ListenQuestionViewController: UIViewController {
     var speakerLock = false
     
     init(delegate: AnswerDelegate){
-        self.delegate = delegate
         super.init(nibName: "ListenQuestionViewController", bundle: nil)
+        self.delegate = delegate
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,18 +36,18 @@ class ListenQuestionViewController: UIViewController {
     @IBAction func chooseAnswerPerform(_ sender: UIButton) {
         switch sender {
         case aUIButton:
-            actionHelper.showWrongAnswerAlert(delegate: delegate,view: self)
+            showWrongAnswerAlert()
             break
         case bUIButton:
-            actionHelper.showRightAnswerAlert(delegate: delegate,view: self)
+            showRightAnswerAlert()
             break
         case cUIButton:
-            actionHelper.showWrongAnswerAlert(delegate: delegate,view: self)
+            showWrongAnswerAlert()
             break
         case dUIButton:
             break
         case backUIButton:
-            actionHelper.comfirmEscape(delegate: delegate, view: self)
+            comfirmEscape()
         default:
             break
         }
@@ -69,8 +68,8 @@ class ListenQuestionViewController: UIViewController {
         setBorder(layer: bUIButton.layer,radius: aUIButton.frame.size.height/2)
         setBorder(layer: cUIButton.layer,radius: aUIButton.frame.size.height/2)
         setBorder(layer: dUIButton.layer,radius: aUIButton.frame.size.height/2)
-        setBorder(layer: backUIButton.layer,width: 1,color: UIColor.white.cgColor,radius: 0)
-        
+        //setBorder(layer: backUIButton.layer,width: 1,color: UIColor.white.cgColor,radius: 0)
+        progressView.setProgress(1, animated: true)
         //loading overlay
         //actionHelper.showLoadingOverlay(view: self)
         
@@ -107,6 +106,10 @@ class ListenQuestionViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        startCountDown(with: progressView)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
@@ -122,6 +125,7 @@ class ListenQuestionViewController: UIViewController {
         layer.borderColor = color
         layer.cornerRadius = radius
     }
+    
 }
 
 extension ListenQuestionViewController : AVSpeechSynthesizerDelegate {

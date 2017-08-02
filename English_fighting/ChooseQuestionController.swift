@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class ChooseQuestionController: UIViewController {
+class ChooseQuestionController: AbstractQuestionViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var backbtn: UIButton!
     @IBOutlet weak var Hintbtn: UIButton!
@@ -16,14 +16,13 @@ class ChooseQuestionController: UIViewController {
     @IBOutlet weak var bbtn: UIButton!
     @IBOutlet weak var cbtn: UIButton!
     @IBOutlet weak var dbtn: UIButton!
+    @IBOutlet weak var progressView : UIProgressView!
     var isQuestionLoaded: Bool?
     let netWorkHelper = NetWorkHelper()
-    let actionHelper = QuestionViewActionHelper()
-    let delegate: AnswerDelegate
     
     init(delegate: AnswerDelegate){
-        self.delegate = delegate
         super.init(nibName: "ChooseQuestionController", bundle: nil)
+        self.delegate = delegate
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,19 +32,19 @@ class ChooseQuestionController: UIViewController {
     @IBAction func perform(_ sender: UIButton) {
         switch sender {
         case backbtn:
-            actionHelper.comfirmEscape(delegate: delegate,view: self)
+            comfirmEscape()
             break
         case abtn:
-            actionHelper.showRightAnswerAlert(delegate: delegate,view: self)
+            showRightAnswerAlert()
             break
         case bbtn:
-            actionHelper.showWrongAnswerAlert(delegate: delegate,view: self)
+            showWrongAnswerAlert()
             break
         case cbtn:
-            actionHelper.showWrongAnswerAlert(delegate: delegate,view: self)
+            showWrongAnswerAlert()
             break
         case dbtn:
-            actionHelper.showWrongAnswerAlert(delegate: delegate,view: self)
+            showWrongAnswerAlert()
             break
         default:
             break
@@ -60,7 +59,9 @@ class ChooseQuestionController: UIViewController {
         setBorder(layer: bbtn.layer)
         setBorder(layer: cbtn.layer)
         setBorder(layer: dbtn.layer)
-        setBorder(layer: backbtn.layer,width: 1,radius: 3)
+        progressView.setProgress(1, animated: false)
+        //setBorder(layer: backbtn.layer,width: 1,radius: 3)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,6 +93,9 @@ class ChooseQuestionController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        startCountDown(with: progressView)
+    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false

@@ -144,6 +144,7 @@ extension GameScene {
             let diceNumber = Int(arc4random_uniform(UInt32(6)))
             self.dice.texture = self.diceFrame[diceNumber]
             self.dicstance = Double(diceNumber+1)*self.DISTANCEPERDICE
+            self.dicstance = 10000
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
                 self.dice.isHidden = true
                 self.state = State.ENDROLL

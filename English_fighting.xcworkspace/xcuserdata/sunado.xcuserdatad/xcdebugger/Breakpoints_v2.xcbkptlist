@@ -19,5 +19,99 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "English_fighting/QuestionViewActionHelper.swift"
+            timestampString = "523361495.98432"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "QuestionViewActionHelper"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "English_fighting.QuestionViewActionHelper.__deallocating_deinit"
+                  moduleName = "English_fighting"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sunado/Google%20Drive/GEM/project/English_fighting/english-finghting/English_fighting/QuestionViewActionHelper.swift"
+                  timestampString = "523361496.723894"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "English_fighting.QuestionViewActionHelper.deinit"
+                  moduleName = "English_fighting"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sunado/Google%20Drive/GEM/project/English_fighting/english-finghting/English_fighting/QuestionViewActionHelper.swift"
+                  timestampString = "523361496.731635"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "English_fighting.QuestionViewActionHelper.init () -&gt; English_fighting.QuestionViewActionHelper"
+                  moduleName = "English_fighting"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sunado/Google%20Drive/GEM/project/English_fighting/english-finghting/English_fighting/QuestionViewActionHelper.swift"
+                  timestampString = "523361496.740577"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "English_fighting.QuestionViewActionHelper.__allocating_init () -&gt; English_fighting.QuestionViewActionHelper"
+                  moduleName = "English_fighting"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sunado/Google%20Drive/GEM/project/English_fighting/english-finghting/English_fighting/QuestionViewActionHelper.swift"
+                  timestampString = "523361496.746712"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "English_fighting/ExtendUiViewController.swift"
+            timestampString = "523362367.321184"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "AbstractQuestionViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
