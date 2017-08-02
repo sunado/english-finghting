@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5D8678023D49A46D37C3D50F /* Pods_English_fighting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C976CA1D3AD372F4E3FFB4 /* Pods_English_fighting.framework */; };
+		88BE17D21F31BDD500C12F3E /* ListenQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE17D11F31BDD500C12F3E /* ListenQuestionViewController.swift */; };
+		88BE17D41F31BDDC00C12F3E /* ListenQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88BE17D31F31BDDC00C12F3E /* ListenQuestionViewController.xib */; };
 		AE0595701F1DA61E00380A3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE05956F1F1DA61E00380A3D /* AppDelegate.swift */; };
 		AE0595721F1DA61E00380A3D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AE0595711F1DA61E00380A3D /* GameScene.sks */; };
 		AE0595741F1DA61E00380A3D /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AE0595731F1DA61E00380A3D /* Actions.sks */; };
@@ -29,8 +31,6 @@
 		AE234F311F25FAC40038EE82 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE234F301F25FAC40038EE82 /* MainMenuController.swift */; };
 		AE73CB4D1F29A32A00E6170B /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73CB4C1F29A32A00E6170B /* GameDelegate.swift */; };
 		AE73CB4F1F29C20300E6170B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73CB4E1F29C20300E6170B /* Config.swift */; };
-		AE95CC561F2F145E008D2D86 /* ListenQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE95CC541F2F145E008D2D86 /* ListenQuestionViewController.swift */; };
-		AE95CC571F2F145E008D2D86 /* ListenQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE95CC551F2F145E008D2D86 /* ListenQuestionViewController.xib */; };
 		AE95CC591F2F1954008D2D86 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE95CC581F2F1954008D2D86 /* NetworkHelper.swift */; };
 		AE95CC5B1F2F2240008D2D86 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE95CC5A1F2F2240008D2D86 /* DataManager.swift */; };
 		AE95CC5D1F2F275B008D2D86 /* QuestionViewActionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE95CC5C1F2F275B008D2D86 /* QuestionViewActionHelper.swift */; };
@@ -43,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		88BE17D11F31BDD500C12F3E /* ListenQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenQuestionViewController.swift; sourceTree = "<group>"; };
+		88BE17D31F31BDDC00C12F3E /* ListenQuestionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListenQuestionViewController.xib; sourceTree = "<group>"; };
 		8E778589789635F8FC337974 /* Pods-English_fighting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-English_fighting.debug.xcconfig"; path = "Pods/Target Support Files/Pods-English_fighting/Pods-English_fighting.debug.xcconfig"; sourceTree = "<group>"; };
 		9183AD568BCA72A394D62808 /* Pods-English_fighting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-English_fighting.release.xcconfig"; path = "Pods/Target Support Files/Pods-English_fighting/Pods-English_fighting.release.xcconfig"; sourceTree = "<group>"; };
 		AE05956C1F1DA61E00380A3D /* English_fighting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = English_fighting.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,8 +70,6 @@
 		AE234F301F25FAC40038EE82 /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		AE73CB4C1F29A32A00E6170B /* GameDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
 		AE73CB4E1F29C20300E6170B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		AE95CC541F2F145E008D2D86 /* ListenQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListenQuestionViewController.swift; path = ../ListenQuestionViewController.swift; sourceTree = "<group>"; };
-		AE95CC551F2F145E008D2D86 /* ListenQuestionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListenQuestionViewController.xib; path = ../ListenQuestionViewController.xib; sourceTree = "<group>"; };
 		AE95CC581F2F1954008D2D86 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		AE95CC5A1F2F2240008D2D86 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		AE95CC5C1F2F275B008D2D86 /* QuestionViewActionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewActionHelper.swift; sourceTree = "<group>"; };
@@ -144,8 +144,8 @@
 		AE0595881F1DA64400380A3D /* layout */ = {
 			isa = PBXGroup;
 			children = (
+				88BE17D31F31BDDC00C12F3E /* ListenQuestionViewController.xib */,
 				AE22C3E41F3018A700E00D38 /* SpeakQuestionViewController.xib */,
-				AE95CC551F2F145E008D2D86 /* ListenQuestionViewController.xib */,
 				AE234F291F25E0D90038EE82 /* ChooseQuestionController.xib */,
 				AE0595731F1DA61E00380A3D /* Actions.sks */,
 				AE0595711F1DA61E00380A3D /* GameScene.sks */,
@@ -187,7 +187,7 @@
 		AEFB7D511F1F1ADC009D062B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				AE95CC541F2F145E008D2D86 /* ListenQuestionViewController.swift */,
+				88BE17D11F31BDD500C12F3E /* ListenQuestionViewController.swift */,
 				AE0595751F1DA61E00380A3D /* GameScene.swift */,
 				AE0595771F1DA61E00380A3D /* GameViewController.swift */,
 				AE234F281F25E0D90038EE82 /* ChooseQuestionController.swift */,
@@ -300,7 +300,7 @@
 			files = (
 				AE05957B1F1DA61E00380A3D /* Main.storyboard in Resources */,
 				AE0595721F1DA61E00380A3D /* GameScene.sks in Resources */,
-				AE95CC571F2F145E008D2D86 /* ListenQuestionViewController.xib in Resources */,
+				88BE17D41F31BDDC00C12F3E /* ListenQuestionViewController.xib in Resources */,
 				AE22C3E61F3018A700E00D38 /* SpeakQuestionViewController.xib in Resources */,
 				AE05957D1F1DA61E00380A3D /* Assets.xcassets in Resources */,
 				AEFB7D501F1F1A48009D062B /* English_fighting.xcworkspace in Resources */,
@@ -378,9 +378,9 @@
 				AE73CB4F1F29C20300E6170B /* Config.swift in Sources */,
 				AE0595781F1DA61E00380A3D /* GameViewController.swift in Sources */,
 				AEFE893E1F2881FF00E104CD /* User.swift in Sources */,
+				88BE17D21F31BDD500C12F3E /* ListenQuestionViewController.swift in Sources */,
 				AE22C3E81F302B8200E00D38 /* SpeakQuestion.swift in Sources */,
 				AE95CC5F1F2F31E9008D2D86 /* ListenQuestion.swift in Sources */,
-				AE95CC561F2F145E008D2D86 /* ListenQuestionViewController.swift in Sources */,
 				AE95CC5D1F2F275B008D2D86 /* QuestionViewActionHelper.swift in Sources */,
 				AE0595701F1DA61E00380A3D /* AppDelegate.swift in Sources */,
 				AE234F2A1F25E0D90038EE82 /* ChooseQuestionController.swift in Sources */,
