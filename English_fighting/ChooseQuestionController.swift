@@ -19,7 +19,7 @@ class ChooseQuestionController: AbstractQuestionViewController {
     @IBOutlet weak var progressView : UIProgressView!
     var isQuestionLoaded: Bool?
     let netWorkHelper = NetWorkHelper()
-    
+    var answer: Int?
     init(delegate: AnswerDelegate){
         super.init(nibName: "ChooseQuestionController", bundle: nil)
         self.delegate = delegate
@@ -35,19 +35,28 @@ class ChooseQuestionController: AbstractQuestionViewController {
             comfirmEscape()
             break
         case abtn:
-            showRightAnswerAlert()
+            showResult(pos: 1)
             break
         case bbtn:
-            showWrongAnswerAlert()
+            showResult(pos: 2)
             break
         case cbtn:
-            showWrongAnswerAlert()
+            showResult(pos: 3)
             break
         case dbtn:
-            showWrongAnswerAlert()
+            showResult(pos: 4)
             break
         default:
             break
+        }
+    }
+    func showResult(pos:Int){
+        if let answer = answer {
+            if answer == pos {
+                showRightAnswerAlert()
+            } else {
+                showWrongAnswerAlert()
+            }
         }
     }
     
@@ -61,18 +70,13 @@ class ChooseQuestionController: AbstractQuestionViewController {
         setBorder(layer: dbtn.layer)
         progressView.setProgress(1, animated: false)
         //setBorder(layer: backbtn.layer,width: 1,radius: 3)
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if isQuestionLoaded == nil  {
-            netWorkHelper.loadQuestion(id: 1, type: DataManager.CHOOSEQUESTION){ json in
+            let id = DataManager.randQuestion(type: DataManager.CHOOSEQUESTION)
+            netWorkHelper.loadQuestion(id: id, type: DataManager.CHOOSEQUESTION){ json in
                 let question = ChooseQuestion.create(data: json)
                 if let question = question {
                     print("finish load")
@@ -83,6 +87,7 @@ class ChooseQuestionController: AbstractQuestionViewController {
                         self.cbtn.setTitle(question.answerC, for: .normal)
                         self.dbtn.setTitle(question.answerD, for: .normal)
                     }
+                    self.answer = question.answer
                     self.isQuestionLoaded = true
                     self.viewDidLoad()
                     self.viewWillAppear(self.isQuestionLoaded!)
@@ -95,10 +100,6 @@ class ChooseQuestionController: AbstractQuestionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         startCountDown(with: progressView)
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
     }
 
     func setBorder(layer: CALayer,width: CGFloat = 1,color: CGColor = UIColor.white.cgColor,radius: CGFloat = 10){

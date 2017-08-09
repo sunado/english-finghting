@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="GrammarCollectionViewCell" customModule="English_fighting" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWO-iM-tGo">
+                        <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
+                        <color key="backgroundColor" red="0.031372549020000001" green="0.035294117649999998" blue="0.1450980392" alpha="0.1428189212" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" title="Button">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="perform:" destination="gTV-IL-0wX" eventType="touchUpInside" id="rPx-G2-OS2"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="eWO-iM-tGo" secondAttribute="trailing" id="DKG-1W-a8K"/>
+                <constraint firstItem="eWO-iM-tGo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="LV2-fB-7lg"/>
+                <constraint firstItem="eWO-iM-tGo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sDW-Bn-fRr"/>
+                <constraint firstAttribute="bottom" secondItem="eWO-iM-tGo" secondAttribute="bottom" id="tg4-M0-V6a"/>
+            </constraints>
+            <size key="customSize" width="70" height="50"/>
+            <connections>
+                <outlet property="wordButton" destination="eWO-iM-tGo" id="8cW-wz-y8n"/>
+            </connections>
+            <point key="canvasLocation" x="44" y="87"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -66,8 +66,14 @@ class GameScene: SKScene {
                 ship.run(action)
                 break
             case .ENDMOVE:
-                showEndMoveAlert()
-                state = State.BEGINTURN
+                let nodes = self.nodes(at: location)
+                nodes.forEach({ (e) in
+                    if e.name == "dice" {
+                        state = State.BEGINTURN
+                        rolltheDice()
+                    }
+                })
+                
                 break
             case .MOVEABLE:
                 let action = SKAction.move(to: location, duration: 2.5)
@@ -90,6 +96,8 @@ class GameScene: SKScene {
             if(dicstance < 0){
                 state = State.ENDMOVE
                 ship.removeAllActions()
+                showEndMoveAlert()
+                dice.isHidden = false
             }
         }
         currentPosition = ship.position
@@ -132,7 +140,8 @@ extension GameScene {
         dice.position = CGPoint(x: 0, y: 0)
         dice.size = CGSize(width: 150, height: 150)
         dice.zPosition = 1
-        dice.isHidden = true
+        dice.isHidden = false
+        dice.name = "dice"
         self.addChild(dice)
     }
     
@@ -144,7 +153,7 @@ extension GameScene {
             let diceNumber = Int(arc4random_uniform(UInt32(6)))
             self.dice.texture = self.diceFrame[diceNumber]
             self.dicstance = Double(diceNumber+1)*self.DISTANCEPERDICE
-            self.dicstance = 10000
+            //self.dicstance = 10000
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
                 self.dice.isHidden = true
                 self.state = State.ENDROLL
@@ -188,11 +197,14 @@ extension GameScene {
     func makeQuestion() -> UIViewController{
         let rand = Int(arc4random_uniform(UInt32(100)))
         //rand = 2
+        //return ListenQuestionViewController(delegate: self) as UIViewController
         switch rand {
-        case 0..<30:
+        case 0..<25:
             return ListenQuestionViewController(delegate: self) as UIViewController
-        case 31..<70:
+        case 25..<49:
             return SpeakQuestionViewController(delegate: self) as UIViewController
+        case 50..<74:
+            return GrammarQuestionViewController(delegate: self) as UIViewController
         default:
             return ChooseQuestionController(delegate: self) as UIViewController
         }
@@ -217,14 +229,7 @@ extension GameScene {
         self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     func showEndMoveAlert(){
-        let alert : UIAlertController = UIAlertController(title: "",
-                                                          message: "Your move end", preferredStyle: .alert)
-        let comfirmAction = UIAlertAction(title: "OK", style: .default){ [unowned self ] action in
-            //do something
-            self.state  = State.BEGINTURN
-        }
-        alert.addAction(comfirmAction)
-        self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+        self.view?.window?.rootViewController?.showToast(message: "EndMove")
     }
 }
 

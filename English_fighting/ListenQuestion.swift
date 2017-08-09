@@ -15,8 +15,8 @@ struct ListenQuestion {
     let answerC: String
     let answerD: String
     let audioPath: String
-    
-    init(question: String,A: String,B: String,C: String,D: String,audioPath: String,key: String = ""){
+    let answer: Int
+    init(question: String,A: String,B: String,C: String,D: String,audioPath: String,answer: Int, key: String = ""){
         self.question = question
         self.answerA = A
         self.answerB = B
@@ -24,18 +24,19 @@ struct ListenQuestion {
         self.answerD = D
         self.audioPath = audioPath
         self.key = key
+        self.answer = answer
     }
     
     static func create(data: [String:Any])->ListenQuestion?{
         guard let question:String = data["question"] as? String,
             let a:String = data["a"] as? String, let b:String = data["b"] as? String,
             let c:String = data["c"] as? String, let d:String = data["d"] as? String,
-            let audioPath = data["audio"] as? String
+            let audioPath = data["audio"] as? String, let answer = data["answer"] as? Int
             else {
                 print("data has no question")
                 return nil
         }
-        return ListenQuestion(question: question, A: a, B: b, C: c, D: d,audioPath: audioPath)
+        return ListenQuestion(question: question, A: a, B: b, C: c, D: d,audioPath: audioPath, answer: answer)
     }
     
     func toAnyObject() ->Any {

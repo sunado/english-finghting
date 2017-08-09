@@ -52,7 +52,7 @@ class AbstractQuestionViewController: UIViewController{
     
     func showRightAnswerAlert() {
         print("showRightAnswerAlert")
-        let alert : UIAlertController = UIAlertController(title: "Great", message: "You win the fight", preferredStyle: .alert)
+        let alert: UIAlertController = UIAlertController(title: "Great", message: "You win the fight", preferredStyle: .alert)
         let comfirmAction = UIAlertAction(title: "OK", style: .default){  action in
             self.delegate?.send(result: true)
             self.navigationController?.popViewController(animated: true)
@@ -62,7 +62,7 @@ class AbstractQuestionViewController: UIViewController{
     }
     
     func showWrongAnswerAlert() {
-        let alert : UIAlertController = UIAlertController(title: "Oh no", message: "You lose the fight", preferredStyle: .alert)
+        let alert: UIAlertController = UIAlertController(title: "Oh no", message: "You lose the fight", preferredStyle: .alert)
         let comfirmAction = UIAlertAction(title: "OK", style: .default){  action in
             self.delegate?.send(result: false)
             self.navigationController?.popViewController(animated: true)
@@ -106,5 +106,12 @@ class AbstractQuestionViewController: UIViewController{
             progressView.setProgress(new, animated: true)
         }
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
 }

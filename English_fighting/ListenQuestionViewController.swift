@@ -23,7 +23,6 @@ class ListenQuestionViewController: AbstractQuestionViewController {
     let speaker = AVSpeechSynthesizer()
     var utterance: AVSpeechUtterance?
     var speakerLock = false
-    
     init(delegate: AnswerDelegate){
         super.init(nibName: "ListenQuestionViewController", bundle: nil)
         self.delegate = delegate
@@ -34,22 +33,19 @@ class ListenQuestionViewController: AbstractQuestionViewController {
     }
     
     @IBAction func chooseAnswerPerform(_ sender: UIButton) {
-        switch sender {
-        case aUIButton:
-            showWrongAnswerAlert()
-            break
-        case bUIButton:
-            showRightAnswerAlert()
-            break
-        case cUIButton:
-            showWrongAnswerAlert()
-            break
-        case dUIButton:
-            break
-        case backUIButton:
-            comfirmEscape()
-        default:
-            break
+
+        let base = sender.currentTitle
+        if let base = base {
+            let index = base.index(base.startIndex, offsetBy: 3)
+            let new = base.substring(from: index).trimmingCharacters(in: .whitespaces)
+            if let question = utterance?.speechString.trimmingCharacters(in: .whitespaces) {
+                print("question: \(question) answer: \(new)")
+                if new == question {
+                    showRightAnswerAlert()
+                } else{
+                    showWrongAnswerAlert()
+                }
+            }
         }
     }
     
@@ -74,8 +70,8 @@ class ListenQuestionViewController: AbstractQuestionViewController {
         //actionHelper.showLoadingOverlay(view: self)
         
         //load question
-        
-        netWorkHelper.loadQuestion(id: 1, type: DataManager.LISTENQUESTION){ json in
+        let id = DataManager.randQuestion(type: DataManager.LISTENQUESTION)
+        netWorkHelper.loadQuestion(id: id, type: DataManager.LISTENQUESTION){ json in
             let question = ListenQuestion.create(data: json)
             if let question = question {
                 DispatchQueue.main.async {
@@ -89,35 +85,18 @@ class ListenQuestionViewController: AbstractQuestionViewController {
                 self.utterance?.voice = AVSpeechSynthesisVoice(language: "en-US")
                 self.utterance?.rate = 0.5
                 self.utterance?.pitchMultiplier = 1.2
-                
                 //stop overlay
             
                 
             }
         }
             
-    
         //set delegate
         self.speaker.delegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         startCountDown(with: progressView)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setBorder(layer: CALayer,width: CGFloat = 1,color: CGColor = UIColor.white.cgColor,radius: CGFloat = 10){
@@ -125,7 +104,6 @@ class ListenQuestionViewController: AbstractQuestionViewController {
         layer.borderColor = color
         layer.cornerRadius = radius
     }
-    
 }
 
 extension ListenQuestionViewController : AVSpeechSynthesizerDelegate {

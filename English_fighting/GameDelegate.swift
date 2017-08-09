@@ -12,3 +12,7 @@ import Foundation
 protocol AnswerDelegate{
     func send(result: Bool)
 }
+
+protocol GrammarAnswerDelegate{
+    func send(result: Int)
+}

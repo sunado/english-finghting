@@ -2,9 +2,9 @@
 
 var mongoose = require('mongoose')
 
-var question = mongoose.model('ListenQuestion')
+var question = mongoose.model('GrammarQuestion')
 
-var ChooseQuesion = require('../models/ListenQuestion')
+var ChooseQuesion = require('../models/GrammarQuestion')
 
 exports.list_all_questions = function(req, res) {
   question.find({}, function(err, task) {

@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5D8678023D49A46D37C3D50F /* Pods_English_fighting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C976CA1D3AD372F4E3FFB4 /* Pods_English_fighting.framework */; };
+		8838FDA91F32B76E00FBDAEA /* GrammarQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8838FDA71F32B76E00FBDAEA /* GrammarQuestionViewController.swift */; };
+		8838FDAA1F32B76E00FBDAEA /* GrammarQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8838FDA81F32B76E00FBDAEA /* GrammarQuestionViewController.xib */; };
+		8838FDB11F32C90E00FBDAEA /* GrammarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8838FDAF1F32C90E00FBDAEA /* GrammarCollectionViewCell.swift */; };
+		8838FDB21F32C90E00FBDAEA /* GrammarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8838FDB01F32C90E00FBDAEA /* GrammarCollectionViewCell.xib */; };
+		8838FDB41F32C9F200FBDAEA /* GrammarQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8838FDB31F32C9F200FBDAEA /* GrammarQuestion.swift */; };
+		88423CBD1F3B022C004B6783 /* GameSocketConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88423CBC1F3B022C004B6783 /* GameSocketConnection.swift */; };
 		88BE17D21F31BDD500C12F3E /* ListenQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE17D11F31BDD500C12F3E /* ListenQuestionViewController.swift */; };
 		88BE17D41F31BDDC00C12F3E /* ListenQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88BE17D31F31BDDC00C12F3E /* ListenQuestionViewController.xib */; };
 		88BE17D61F31BFC100C12F3E /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88BE17D51F31BFC100C12F3E /* GameViewController.xib */; };
@@ -44,6 +50,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8838FDA71F32B76E00FBDAEA /* GrammarQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrammarQuestionViewController.swift; sourceTree = "<group>"; };
+		8838FDA81F32B76E00FBDAEA /* GrammarQuestionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GrammarQuestionViewController.xib; sourceTree = "<group>"; };
+		8838FDAF1F32C90E00FBDAEA /* GrammarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrammarCollectionViewCell.swift; sourceTree = "<group>"; };
+		8838FDB01F32C90E00FBDAEA /* GrammarCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GrammarCollectionViewCell.xib; sourceTree = "<group>"; };
+		8838FDB31F32C9F200FBDAEA /* GrammarQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrammarQuestion.swift; sourceTree = "<group>"; };
+		88423CBC1F3B022C004B6783 /* GameSocketConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSocketConnection.swift; sourceTree = "<group>"; };
 		88BE17D11F31BDD500C12F3E /* ListenQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenQuestionViewController.swift; sourceTree = "<group>"; };
 		88BE17D31F31BDDC00C12F3E /* ListenQuestionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListenQuestionViewController.xib; sourceTree = "<group>"; };
 		88BE17D51F31BFC100C12F3E /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
@@ -146,6 +158,7 @@
 		AE0595881F1DA64400380A3D /* layout */ = {
 			isa = PBXGroup;
 			children = (
+				8838FDA81F32B76E00FBDAEA /* GrammarQuestionViewController.xib */,
 				88BE17D31F31BDDC00C12F3E /* ListenQuestionViewController.xib */,
 				AE22C3E41F3018A700E00D38 /* SpeakQuestionViewController.xib */,
 				AE234F291F25E0D90038EE82 /* ChooseQuestionController.xib */,
@@ -153,6 +166,8 @@
 				AE0595711F1DA61E00380A3D /* GameScene.sks */,
 				AE0595791F1DA61E00380A3D /* Main.storyboard */,
 				88BE17D51F31BFC100C12F3E /* GameViewController.xib */,
+				8838FDAF1F32C90E00FBDAEA /* GrammarCollectionViewCell.swift */,
+				8838FDB01F32C90E00FBDAEA /* GrammarCollectionViewCell.xib */,
 			);
 			name = layout;
 			sourceTree = "<group>";
@@ -183,6 +198,7 @@
 				AE95CC5A1F2F2240008D2D86 /* DataManager.swift */,
 				AE95CC5E1F2F31E9008D2D86 /* ListenQuestion.swift */,
 				AE22C3E71F302B8200E00D38 /* SpeakQuestion.swift */,
+				8838FDB31F32C9F200FBDAEA /* GrammarQuestion.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -196,6 +212,7 @@
 				AE234F281F25E0D90038EE82 /* ChooseQuestionController.swift */,
 				AE234F301F25FAC40038EE82 /* MainMenuController.swift */,
 				AE22C3E31F3018A700E00D38 /* SpeakQuestionViewController.swift */,
+				8838FDA71F32B76E00FBDAEA /* GrammarQuestionViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -208,6 +225,7 @@
 				AE73CB4E1F29C20300E6170B /* Config.swift */,
 				AE95CC581F2F1954008D2D86 /* NetworkHelper.swift */,
 				88BE17D71F31C97F00C12F3E /* ExtendUiViewController.swift */,
+				88423CBC1F3B022C004B6783 /* GameSocketConnection.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -302,9 +320,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE05957B1F1DA61E00380A3D /* Main.storyboard in Resources */,
+				8838FDB21F32C90E00FBDAEA /* GrammarCollectionViewCell.xib in Resources */,
 				AE0595721F1DA61E00380A3D /* GameScene.sks in Resources */,
 				88BE17D41F31BDDC00C12F3E /* ListenQuestionViewController.xib in Resources */,
 				AE22C3E61F3018A700E00D38 /* SpeakQuestionViewController.xib in Resources */,
+				8838FDAA1F32B76E00FBDAEA /* GrammarQuestionViewController.xib in Resources */,
 				AE05957D1F1DA61E00380A3D /* Assets.xcassets in Resources */,
 				AEFB7D501F1F1A48009D062B /* English_fighting.xcworkspace in Resources */,
 				88BE17D61F31BFC100C12F3E /* GameViewController.xib in Resources */,
@@ -373,10 +393,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE95CC591F2F1954008D2D86 /* NetworkHelper.swift in Sources */,
+				8838FDB11F32C90E00FBDAEA /* GrammarCollectionViewCell.swift in Sources */,
 				AE05958E1F1DAE3B00380A3D /* Matrix.swift in Sources */,
+				88423CBD1F3B022C004B6783 /* GameSocketConnection.swift in Sources */,
 				AE234F311F25FAC40038EE82 /* MainMenuController.swift in Sources */,
 				AE95CC5B1F2F2240008D2D86 /* DataManager.swift in Sources */,
+				8838FDA91F32B76E00FBDAEA /* GrammarQuestionViewController.swift in Sources */,
 				AE73CB4D1F29A32A00E6170B /* GameDelegate.swift in Sources */,
+				8838FDB41F32C9F200FBDAEA /* GrammarQuestion.swift in Sources */,
 				AE22C3E51F3018A700E00D38 /* SpeakQuestionViewController.swift in Sources */,
 				AE0595761F1DA61E00380A3D /* GameScene.swift in Sources */,
 				AE73CB4F1F29C20300E6170B /* Config.swift in Sources */,

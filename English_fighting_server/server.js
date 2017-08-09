@@ -5,6 +5,9 @@ app = express(),
 port = process.env.PORT || 3000,
 mongoose = require('mongoose'),
 ChooseQuestion = require('./api/models/ChooseQuestion'),
+ListenQuestion = require('./api/models/ListenQuestion'),
+GrammarQuestion = require('./api/models/GrammarQuestion'),
+SpeakQuestion = require('./api/models/SpeakQuestion'),
 User = require('./api/models/User'),
 bodyParser = require('body-parser')
 

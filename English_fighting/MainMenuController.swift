@@ -16,7 +16,7 @@ class MainController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 
     override func didReceiveMemoryWarning() {

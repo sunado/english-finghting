@@ -21,7 +21,7 @@ class SpeakQuestionViewController: AbstractQuestionViewController {
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
-    
+    var content: String?
     init(delegate: AnswerDelegate){
         super.init(nibName: "SpeakQuestionViewController", bundle: nil)
         self.delegate = delegate
@@ -35,8 +35,6 @@ class SpeakQuestionViewController: AbstractQuestionViewController {
     @IBAction func performRecognize(_ sender: UIButton) {
         if !audioEngine.isRunning {
             startRecording()
-        } else{
-            audioEngine.stop()
         }
     }
     
@@ -72,17 +70,23 @@ class SpeakQuestionViewController: AbstractQuestionViewController {
                 self.recognizerUIButton.isEnabled = isButtonEnable
             }
         }
+        
+        let id = DataManager.randQuestion(type: DataManager.SPEAKQUESTION)
+        networkHelper.loadQuestion(id: id, type: DataManager.SPEAKQUESTION){ json in
+            let question = SpeakQuestion.create(data: json)
+            if let question = question {
+                DispatchQueue.main.async {
+                    self.contentLabel.text = question.content
+                }
+                self.content = question.content
+            }
+        }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
-    }
     override func viewDidAppear(_ animated: Bool) {
         startCountDown(with: progressView)
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
-    }
+
 }
 
 extension SpeakQuestionViewController : SFSpeechRecognizerDelegate {
